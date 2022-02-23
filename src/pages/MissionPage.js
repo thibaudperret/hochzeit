@@ -47,7 +47,6 @@ function MissionPage({ missionId }) {
     return <Box sx={{ 
         width: '100%',
         height: '100%',
-        backgroundColor: '#ffe0b8',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
