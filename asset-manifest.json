@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hochzeit/static/css/main.bc8ae95c.css",
-    "main.js": "/hochzeit/static/js/main.98b486ae.js",
+    "main.js": "/hochzeit/static/js/main.d1fb6517.js",
     "index.html": "/hochzeit/index.html",
     "main.bc8ae95c.css.map": "/hochzeit/static/css/main.bc8ae95c.css.map",
-    "main.98b486ae.js.map": "/hochzeit/static/js/main.98b486ae.js.map"
+    "main.d1fb6517.js.map": "/hochzeit/static/js/main.d1fb6517.js.map"
   },
   "entrypoints": [
     "static/css/main.bc8ae95c.css",
-    "static/js/main.98b486ae.js"
+    "static/js/main.d1fb6517.js"
   ]
 }
