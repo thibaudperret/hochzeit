@@ -11,7 +11,7 @@ function PassPage({ logIn }) {
                 if (hash === 'd9a2129324c7c7d6b3239998f0511769133aeab45be0f9b097abb2bf99658a67') {
                     logIn();
                 } else {
-                    setPassword(false);
+                    setPassword('');
                 }
             });
     }

@@ -1,18 +1,23 @@
-import { useParams } from 'react-router-dom';
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+
+import missions from './missions.json';
 
 const Input = styled('input')({
     display: 'none'
 })
 
-function MissionPage() {
-    const { missionId } = useParams();
+function MissionPage({ missionId }) {
+    const mission = missions[missionId];
+    if (!mission) {
+        return <p>Mission nicht gefunden</p>
+    }
 
     const tryUploading = event => {
         const file = event.target.files[0];
         const reader = new FileReader();
+
         reader.readAsDataURL(file);
         reader.onload = () => {
             const rawLog = reader.result.split(',')[1];
@@ -25,40 +30,21 @@ function MissionPage() {
         }
     }
     
-    return <>
-        <Typography variant="h5">Deine Mission: {missionId}</Typography>
+    return <Box sx={{ 
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#ffe0b8',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    }}>
+        <Typography variant="h5" sx={{ marginTop: '100px', color: '#ff7373' }}>Deine Mission:</Typography>
+        <Typography variant="p" sx={{ margin: '100px 20px', color: '#9d4a4a' }}>{mission}</Typography>
         <label htmlFor="contained-button-file">
             <Input accept="image/*" id="contained-button-file" type="file" onChange={tryUploading} />
-            <Button variant="contained" component="span" endIcon={<PhotoCamera />}>Hochladen</Button>
-      </label>
-    </>
+            <Button variant="contained" component="span" endIcon={<PhotoCamera />} sx={{ backgroundColor: '#ff7373' }}>Hochladen</Button>
+        </label>
+    </Box>;
 }
-
-// function App() {
-//     function guardarArchivo(e) {
-//       var file = e.target.files[0] //the file
-//       var reader = new FileReader() //this for convert to Base64 
-//       reader.readAsDataURL(e.target.files[0]) //start conversion...
-//       reader.onload = function (e) { //.. once finished..
-//         var rawLog = reader.result.split(',')[1]; //extract only thee file data part
-//         var dataSend = { dataReq: { data: rawLog, name: file.name, type: file.type }, fname: "uploadFilesToGoogleDrive" }; //preapre info to send to API
-//         fetch('https://script.google.com/macros/s/AKfycbwAkvF6oxuMHMsqgyFt9TFX-YBF0cl_sZQPsB9e7RC8O5iu5VLD/exec', //your AppsScript URL
-//           { method: "POST", body: JSON.stringify(dataSend) }) //send to Api
-//           .then(res => res.json()).then((a) => {
-//             console.log(a) //See response
-//           }).catch(e => console.log(e)) // Or Error in console
-//       }
-//     }
-  
-//     return (
-//       <div className="App">
-//         <div className="App-header">
-//           <input type="file" accept="application/pdf" id="customFile" onChange={(e) => guardarArchivo(e)} />
-//         </div>
-//       </div>
-//     );
-//   }
-  
-//   export default App;
 
 export default MissionPage;
