@@ -16,8 +16,9 @@ function Dispatch() {
     switch (hash.split('/')[1]) {
         case 'admin':
             return <PassWrapper element={<AdminPage />} />
-        case 'mission':
+        case 'aufgabe':
             return <PassWrapper element={<MissionPage missionId={hash.split('/')[2]} />} />
+            // return <MissionPage missionId={hash.split('/')[2]} />
         default:
             return <></>;
     }

@@ -18,7 +18,17 @@ function MissionPage({ missionId }) {
 
     const mission = missions[missionId];
     if (!mission) {
-        return <p>Fotoaufgabe nicht gefunden</p>
+        return <Box sx={{ 
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        }}>
+            <Typography variant="p" sx={{ margin: '100px 20px', color: '#9d4a4a', textAlign: 'center', fontSize: '20px' }}>
+                Fotoaufgabe nicht gefunden. <br /><br />Bitte überprüfe, dass der Code <code style={{ color: '#ff7373' }}>{missionId}</code> dem Code auf der Karte entspricht. Falls nicht, bitte geh zu Céline Saxer
+            </Typography>
+        </Box>
     }
 
     const tryUploading = event => {
@@ -51,8 +61,8 @@ function MissionPage({ missionId }) {
         flexDirection: 'column',
         alignItems: 'center'
     }}>
-        <Typography variant="h4" sx={{ marginTop: '50px', color: '#ff7373' }}>Deine Fotoaufgabe</Typography>
-        <Typography variant="p" sx={{ margin: '100px 20px', color: '#9d4a4a', fontSize: '20px' }}>{mission}</Typography>
+        <Typography variant="p" sx={{ marginTop: '50px', color: '#ff7373', fontSize: '20px' }}>Deine Fotoaufgabe</Typography>
+        <Typography variant="h4" sx={{ margin: '100px 20px', color: '#9d4a4a', textAlign: 'center' }}>{mission}</Typography>
         {!done && <>
             <label htmlFor="contained-button-file">
                 <Input accept="image/*" id="contained-button-file" type="file" onChange={tryUploading} />
@@ -60,7 +70,7 @@ function MissionPage({ missionId }) {
                     variant="contained"
                     component="span"
                     endIcon={<PhotoCamera />}
-                    sx={{ backgroundColor: '#ff7373', '&:hover': { backgroundColor: '#c64f4f' } }}
+                    sx={{ backgroundColor: '#ff7373', '&:hover': { backgroundColor: '#c64f4f' }, '&:disabled': { backgroundColor: '', color: '' } }}
                     disabled={loading}
                 >Hochladen</Button>
             </label>
